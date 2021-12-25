@@ -1,0 +1,9 @@
+@charset "UTF-8";
+
+
+
+section#enroll-container{width:600px; margin:0 auto; }
+section#enroll-container h2{margin:10px 0; margin-bottom:25px; }
+table#tbl-enroll-form{width:100%; margin:auto; border:0; border-collapse:collapse; clear:both; }
+table#tbl-enroll-form th,td {border:0; height:30px; padding: 5px 0;}
+table#tbl-enroll-form tr td input{border:1px solid #ced4da; }

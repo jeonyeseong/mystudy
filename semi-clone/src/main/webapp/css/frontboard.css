@@ -1,0 +1,81 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: 'InfinitySans-RegularA1';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/InfinitySans-RegularA1.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+section#board-container{width:100%; margin:0 auto; text-align:center; background:  #f8f9fa; border-radius: 5%;}
+section#board-container h2{margin:10px 0;}
+
+div#banner{display:block;}
+ul.ulbanner{list-style:none; display:flex; flex-wrap: wrap; background: skyblue; text-align:center;}
+li.libannerall{margin-left:20%; text-align:center;}
+div.banner2{display:flex;}
+section.secbanner{display:flex; margin-left:5%;}
+div.bannerright{display:flex; margin:10px;}
+div.bannerright1{display:flex; font-size:27px; margin:10px;cursor:pointer; transition: all 0.25s;}
+div.bannerright2{display:flex; font-size:27px; margin:10px;cursor:pointer; transition: all 0.25s;}
+div.bannerleft{display:flex;  margin:10px; margin-left: 750px;}
+div.bannerleft1{display:flex; font-size:27px; margin:10px;cursor:pointer; transition: all 0.25s;}
+div.bannerleft2{display:flex; font-size:27px; margin:10px;cursor:pointer; transition: all 0.25s;}
+div.bannerright1:hover{font-size:29px;}
+div.bannerright2:hover{font-size:29px;}
+div.bannerleft1:hover{font-size:29px;}
+div.bannerleft2:hover{font-size:29px;}
+ul.ultest1{display: flex; justify-content: center; position: relative; right: 13px; list-style: none; }
+ul.ultest{display: flex; flex-wrap: wrap;list-style: none;  margin-left: 120px;}
+ul.ultest2{display: flex; flex-wrap: wrap;list-style: none;  margin-left: 120px;}
+ul.ultest3{display: flex; flex-wrap: wrap;list-style: none;  margin-left: 120px;}
+ul.ultest4{display: flex; flex-wrap: wrap;list-style: none;  margin-left: 120px;}
+li.litest h1{ font-family: 'InfinitySans-RegularA1';}
+
+li.litest1 p{display:block; font-family: 'InfinitySans-RegularA1';}
+
+li.litest1{margin: 5px; }
+section.toptext{display:flex; position:absolute; top:7.6rem;  left:0.7rem;}
+section.undertext{display:flex; position:absolute; top:7.5rem;  left:9rem;}
+
+li.litest p{ font-family: 'InfinitySans-RegularA1';}
+li.litest1{margin: 10px; }
+div.undertext{display:in-line-block; position:absolute; padding:none; text-align:center;}
+
+
+/*희연 title css */
+#title{
+	font-size: 5rem;
+	color: black;
+	font-family: 'Exo', sans-serif;
+	text-decoration-line : none;
+	}
+	#title span{
+	color: #eb4b3f;
+	font-family: 'Secular One', sans-serif;
+	font-weight: 600;
+	margin-bottom: 0;
+	padding-bottom: 0;
+	}
+	#title2{
+    font-size: 1.6rem;
+    margin-bottom: 0;
+    margin-top: 20px;
+    padding-bottom: 0;
+    font-family: 'InfinitySans-RegularA1';
+	}
+	.title{
+	margin: 2rem;
+	padding: 1rem;
+	margin-bottom: 0;
+	padding-bottom: 0;
+	}
+	#writing-btn {
+	margin-left: 80%;
+    margin-bottom: 2%;
+     font-family: 'InfinitySans-RegularA1';
+	}
+	#banner{
+	margin: 0 auto;
+	}
+

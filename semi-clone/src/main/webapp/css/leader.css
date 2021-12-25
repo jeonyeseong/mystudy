@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+
+
+
+
+svg#check {
+	color : white;
+	width : 30px; 
+	height : 30px;
+	
+}
+svg#refuse {
+	color : white;
+	width : 30px; 
+	height : 30px;
+	
+}
+dic#board-container{width:100%; margin:0 auto; text-align:center;}
+
+
+table#tbl-board{width:100%; margin:0 auto; border-top:2px solid; border-collapse:collapse; clear:both }
+table#tbl-board th {
+					text-align:center;
+					height:40px;
+					border-top:2px solid purple;
+					border-bottom:1px solid #CCC;
+					font-weight: bold;
+					font-size: 17px;}
+
+table#tbl-board td {
+					text-align:center;
+					padding:10px 0;
+					border-bottom:1px solid #CCC; height:20px;
+					font-size: 14px;
+					} 
