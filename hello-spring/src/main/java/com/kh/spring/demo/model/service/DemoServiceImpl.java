@@ -1,5 +1,8 @@
 package com.kh.spring.demo.model.service;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,5 +19,16 @@ public class DemoServiceImpl implements DemoService {
 	public int insertDev(Dev dev) {
 		return demoDao.insertDev(dev);
 	}
+
+	@Override
+	public List<Dev> selectDevList() {
+		return demoDao.selectDevList();
+	}
+
+	@Override
+	public List<Map<String, Object>> selectMapList() {
+		return demoDao.selectMapList();
+	}
+
 
 }
