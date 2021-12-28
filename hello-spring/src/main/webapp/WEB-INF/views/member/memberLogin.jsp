@@ -53,11 +53,11 @@ $(()=>{
 					action="${pageContext.request.contextPath}/member/memberLogin.do"
 					method="post">
 					<div class="modal-body">
-						<input type="text" class="form-control" name="id"
+						<input type="text" class="form-control" name="id" value="honggd"
 							placeholder="아이디" required> 
 							<br /> 
 						<input
-							type="password" class="form-control" name="password"
+							type="password" class="form-control" name="password" value="1234"
 							placeholder="비밀번호" required>
 					</div>
 					<div class="modal-footer">

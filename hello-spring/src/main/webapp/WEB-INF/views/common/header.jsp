@@ -52,10 +52,11 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="${pageContext.request.contextPath}/demo/devForm.do">Dev 등록</a>
-                            <a class="dropdown-item" href="${pageContext.request.contextPath}/demo/devList.do">Dev 목록</a>
+                            <a class="dropdown-item" href="${pageContext.request.contextPath}/demo/devList.do?id=abcde&kkk=ddd">Dev 목록</a>
                         </div>
 				    </li>
 			    </ul>
+			    <c:if test="${empty loginMember}">
 			    <button class="btn btn-outline-success my-2 my-sm-0" 
 			    type="button" 
 			    onclick="location.href='${pageContext.request.contextPath}/member/memberLogin.do';">로그인</button>
@@ -63,6 +64,14 @@
                 <button class="btn btn-outline-success my-2 my-sm-0" 
                 type="button"
                 onclick="location.href='${pageContext.request.contextPath}/member/memberEnroll.do';">회원가입</button>
+			    </c:if>
+			    <c:if test="${not empty loginMember}">
+			    	<span><a href="#">${loginMember.name}</a>님, 안녕하세요</span>
+			    	&nbsp;
+			    <button class="btn btn-outline-success my-2 my-sm-0" 
+			    type="button" 
+			    onclick="location.href='${pageContext.request.contextPath}/member/memberLogout.do';">로그아웃</button>
+			    </c:if>
 			 </div>
 		</nav>
 	</header>
