@@ -42,6 +42,15 @@
 			<version>${org.aspectj-version}</version>
 		</dependency>	
 		
+		<!-- #10. aop처리용 aspectjweaver 의존 추가 -->
+		<dependency>
+		    <groupId>org.aspectj</groupId>
+		    <artifactId>aspectjweaver</artifactId>
+		    <version>1.9.6</version>
+		    <scope>runtime</scope>
+		</dependency>
+
+		
 		<!-- Logging -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
