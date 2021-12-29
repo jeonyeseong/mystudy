@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StopWatch;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -22,6 +23,13 @@ import com.kh.spring.memo.model.vo.Memo;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * 
+ * Proxy객체를 통해 AOP를 구현한다.
+ *  - 인터페이스구현객체 : JDK동적 proxy객체를 의존주입한다.
+ *  - 인터페이스구현하지 않은 객체 : CGLIB에 의해 생성된 PROXY객체를 의존주입한다.
+ *
+ */
 @Controller
 @RequestMapping("/memo")
 @Slf4j
@@ -49,7 +57,10 @@ public class MemoController {
 	
 	@PostMapping("/insertMemo.do")
 	public String insertMemo(Memo memo, RedirectAttributes redirectAttr) {
-		
+		//StopWatch stopwatch = new StopWatch();
+		//stopwatch.start();
+		//log.debug("stopwatch 시작");
+		log.debug("의존타입 : {}", memoService.getClass());
 		try {
 			log.debug("memo={}", memo);
 
@@ -61,6 +72,11 @@ public class MemoController {
 			log.error(e.getMessage(), e);
 			throw e; // spring container 예외처리 위임
 		}
+		
+		//stopwatch.stop();
+		//log.debug("stopwatch 스탑");
+		
+		//System.out.println(stopwatch.prettyPrint());
 		return "redirect:/memo/memo.do";
 	}
 	
