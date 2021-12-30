@@ -25,7 +25,19 @@ public class MemoServiceImpl implements MemoService {
 
 	@Override
 	public int insertMemo(Memo memo) {
+		log.debug("서비스 주업무");
 		return memoDao.insertMemo(memo);
+	}
+
+	@Override
+	public int deleteMemo(int no) {
+		log.debug("서비스 주업무");
+		return memoDao.deleteMemo(no);
+	}
+
+	@Override
+	public Memo selectOneMemo(int no) {
+		return memoDao.selectOneMemo(no);
 	}
 
 }

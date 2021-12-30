@@ -80,6 +80,22 @@ public class MemoController {
 		return "redirect:/memo/memo.do";
 	}
 	
+	@PostMapping("/deleteMemo.do")
+	public String deleteMemo(
+			@RequestParam int no, 
+			String password,
+			RedirectAttributes redirectAttr
+	) {
+		log.debug("no = {} , password = {}", no , password);
+		
+		int result = memoService.deleteMemo(no);
+		
+		redirectAttr.addFlashAttribute("msg", result > 0 ? "메모삭제 성공": "메모삭제 실패");
+		
+		return "redirect:/memo/memo.do";
+	}
+	
+	
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");

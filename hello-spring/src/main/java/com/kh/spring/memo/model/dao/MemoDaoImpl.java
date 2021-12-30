@@ -25,7 +25,19 @@ public class MemoDaoImpl implements MemoDao {
 
 	@Override
 	public int insertMemo(Memo memo) {
+		log.debug("DAO 주업무");
 		return session.insert("memo.insertMemo", memo);
+	}
+
+	@Override
+	public int deleteMemo(int no) {
+		log.debug("DAO 주업무");
+		return session.delete("memo.deleteMemo", no);
+	}
+
+	@Override
+	public Memo selectOneMemo(int no) {
+		return session.selectOne("memo.selectOneMemo", no);
 	}
 
 }
