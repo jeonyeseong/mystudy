@@ -13,10 +13,10 @@ public class LogAspect {
 		Signature signature = joinPoint.getSignature(); // 메소드정보
 		String type = signature.getDeclaringTypeName(); // 클래스명
 		String methodName = signature.getName(); 		//메소드명
-		StopWatch stopwatch = new StopWatch();
+		//StopWatch stopwatch = new StopWatch();
 		
 		//joinPoint호출전
-		stopwatch.start();
+		//stopwatch.start();
 		log.debug("[Before] {}.{}",type, methodName);
 		
 		//주업무로직의 특정메소드 호출
@@ -24,9 +24,9 @@ public class LogAspect {
 		
 		//joinPoint호출후
 		log.debug("[After] {}.{}",type, methodName);
-		stopwatch.stop();
+		//stopwatch.stop();
 		
-		System.out.println(stopwatch.prettyPrint());
+		//System.out.println(stopwatch.prettyPrint());
 		return retObj;
 	}
 }
