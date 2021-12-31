@@ -33,18 +33,34 @@
 			<beans:bean class="com.kh.spring.common.interceptor.LogInterceptor" id="logInterceptor"/>
 		</interceptor>
 		
-			<!-- 예외처리 -->
 		<interceptor>
 			<mapping path="/demo/**"/>
+			<mapping path="/board/**"/>
 			
+			<!-- 예외처리 -->
 			<exclude-mapping path="/demo/devForm.do"/>
 			<exclude-mapping path="/demo/dev1.do"/>
 			<exclude-mapping path="/demo/dev2.do"/>
 			<exclude-mapping path="/demo/dev3.do"/>
+			<exclude-mapping path="/board/boardList.do"/>
 			
 			<beans:bean class="com.kh.spring.common.interceptor.LoginCheckInterceptor" id="loginCheckInterceptor"/>
 		</interceptor>
 		</interceptors>
+		
+		<!-- #11.1 파일업로드 처리용 빈등록 -->
+		<beans:bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="multipartResolver">
+			<!-- 한요청당 최대업로드크기 50mb(50 * 1024 * 1024)-->
+			<beans:property name="maxUploadSize" value="52428800"/>
+			<!-- 파일 하나당 최대크기 10mb(10 * 1024 * 1024)-->
+			<beans:property name="maxUploadSizePerFile" value="10485760"/>
+
+		</beans:bean>
+		
+		
+		
+		
+		
 		
 	</beans:beans>
 	
