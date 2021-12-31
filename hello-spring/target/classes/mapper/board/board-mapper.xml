@@ -12,5 +12,12 @@
 	order by 
 		no desc
 	</select>
+	
+	<select id="selectTotalBoardCount" resultType="int">
+	select 
+		count(*) 
+	from 
+		board
+	</select>
 </mapper>
 

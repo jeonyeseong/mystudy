@@ -20,4 +20,9 @@ public class BoardServiceImpl implements BoardService {
 		return boardDao.selectBoardList(param);
 	}
 
+	@Override
+	public int selectTotalBoardCount() {
+		return boardDao.selectTotalBoardCount();
+	}
+
 }
