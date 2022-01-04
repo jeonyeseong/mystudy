@@ -50,6 +50,16 @@ public class BoardDaoImpl implements BoardDao {
 	public List<Attachment> selectListAttachment(int no) {
 		return session.selectList("board.selectListAttachment", no);
 	}
+
+	@Override
+	public Board selectOneBoardCollection(int no) {
+		return session.selectOne("board.selectOneBoardCollection",no);
+	}
+
+	@Override
+	public Attachment selectOneAttachment(int no) {
+		return session.selectOne("board.selectOneAttachment", no);
+	}
 	
 	
 }
