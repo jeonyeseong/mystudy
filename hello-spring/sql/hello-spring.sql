@@ -260,6 +260,18 @@ from (
 		board b ;
 select count(*) from board;
 
+select * from member;
 
-
-
+		select 
+		    b.*,
+		    a.*,
+		    a.no attach_no,
+		    m.*
+		from
+		    board b 
+		    	left join attachment a
+		        	on b.no = a.board_no
+		        join member m
+		        	on b.member_id = m.id 
+		where
+		    b.no = 321;

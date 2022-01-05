@@ -19,33 +19,34 @@ div#board-container label.custom-file-label{text-align:left;}
 		   value="${board.title}" required>
 	<input type="text" class="form-control" 
 		   name="memberId" 
-		   value="${board.memberId}" readonly required>
-
+		   value="${board.member.name} (${board.member.id})" readonly required>
+	
 	<c:forEach items="${board.attachments}" var="attach" varStatus="vs">
-<%-- 		
-	<a 		href="${pageContext.request.contextPath}/resources/upload/board/${attach.renamedFilename}"
-				role="button" 
-				class="btn btn-outline-success btn-block"
-				download="${attach.originalFilename}">
-				첨부파일${vs.count} - ${attach.originalFilename}
+	<%-- 		
+		<a href="${pageContext.request.contextPath}/resources/upload/board/${attach.renamedFilename}"
+			role="button" 
+			class="btn btn-outline-success btn-block"
+			download="${attach.originalFilename}">
+			첨부파일${vs.count} - ${attach.originalFilename}
 		</a> 
- --%>
-		<a 		href="${pageContext.request.contextPath}/board/fileDownload.do?no=${attach.no}"
-				role="button" 
-				class="btn btn-outline-success btn-block">
-				첨부파일${vs.count} - ${attach.originalFilename}
-		</a> 
+	--%>
+		<a href="${pageContext.request.contextPath}/board/fileDownload.do?no=${attach.no}"
+			role="button" 
+			class="btn btn-outline-success btn-block">
+			첨부파일${vs.count} - ${attach.originalFilename}
+		</a>
 	</c:forEach>
-		<a 		href="${pageContext.request.contextPath}/board/urlResource.do"
-				role="button" 
-				class="btn btn-outline-success btn-block">
-				UrlResource 확인
-		</a> 
+	<a href="${pageContext.request.contextPath}/board/urlResource.do"
+		role="button" 
+		class="btn btn-outline-success btn-block">
+		UrlResource 확인 
+	</a>
+	
     <textarea class="form-control mt-3" name="content" 
     		  placeholder="내용" required>${board.content}</textarea>
     <input type="number" class="form-control" name="readCount" title="조회수"
 		   value="${board.readCount}" readonly>
 	<input type="datetime-local" class="form-control" name="regDate" 
-		   value='<fmt:formatDate value="${board.regDate}" pattern="yyyy-MM-dd'T'HH:mm:ss"/>'>
+		   value='<fmt:formatDate value="${board.regDate}" pattern="yyyy-MM-dd'T'HH:mm"/>'>
 </div>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
