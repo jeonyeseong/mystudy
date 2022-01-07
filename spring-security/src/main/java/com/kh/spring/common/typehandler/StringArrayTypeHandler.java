@@ -41,6 +41,9 @@ public class StringArrayTypeHandler extends BaseTypeHandler<String[]> {
 	@Override
 	public String[] getNullableResult(ResultSet rs, String columnName) throws SQLException {
 		String columnValue = rs.getString(columnName);
+		if(columnValue == null)
+				return null;
+		
 		columnValue = columnValue.replaceAll("\\s", "");
 		String[] value = null;
 		if(columnValue != null) {
@@ -61,6 +64,9 @@ public class StringArrayTypeHandler extends BaseTypeHandler<String[]> {
 	@Override
 	public String[] getNullableResult(ResultSet rs, int columnIndex) throws SQLException {
 		String columnValue = rs.getString(columnIndex);
+		if(columnValue == null)
+			return null;
+		
 		columnValue = columnValue.replaceAll("\\s", "");
 		String[] value = null;
 		log.debug("index");
@@ -82,6 +88,9 @@ public class StringArrayTypeHandler extends BaseTypeHandler<String[]> {
 	@Override
 	public String[] getNullableResult(CallableStatement cs, int columnIndex) throws SQLException {
 		String columnValue = cs.getString(columnIndex);
+		if(columnValue == null)
+			return null;
+		
 		columnValue = columnValue.replaceAll("\\s", "");
 		String[] value = null;
 		if(columnValue != null) {

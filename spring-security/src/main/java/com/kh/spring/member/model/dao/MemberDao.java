@@ -1,9 +1,9 @@
 package com.kh.spring.member.model.dao;
 
-import com.kh.spring.member.model.vo.Member;
+import com.kh.spring.member.model.vo.MemberEntity;
 
 public interface MemberDao {
 
-	int insertMember(Member member);
+	int insertMember(MemberEntity member);
 
 }
