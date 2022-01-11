@@ -170,7 +170,7 @@ div.result{width:70%; margin:0 auto;}
 				console.log(one);
 				
 				$.ajax({
-					url: `${pageContext.request.contextPath}/menus/\${one}`,
+					url: `${pageContext.request.contextPath}/menu/\${one}`,
 					method:"GET",
 					success(resp){
 						console.log(resp);
@@ -266,7 +266,148 @@ div.result{width:70%; margin:0 auto;}
 	});
 	</script>
 	
+	
+		<!-- #3.PUT -->
+		<div class="menu-test">
+			<h4>메뉴 수정하기(PUT)</h4>
+			<p>메뉴번호를 사용해 해당메뉴정보를 수정함.</p>
+			<form id="menuSearchFrm">
+				<input type="text" name="id" placeholder="메뉴번호" class="form-control" /><br />
+				<input type="submit" class="btn btn-block btn-outline-primary btn-send" value="검색" >
+			</form>
+		
+			<hr />
+			<form id="menuUpdateFrm">
+				<!-- where조건절에 사용할 id를 담아둠 -->
+				<input type="hidden" name="id" />
+				<input type="text" name="restaurant" placeholder="음식점" class="form-control" />
+				<br />
+				<input type="text" name="name" placeholder="메뉴" class="form-control" />
+				<br />
+				<input type="number" name="price" placeholder="가격" step="1000" class="form-control" />
+				<br />
+				<div class="form-check form-check-inline">
+					<input type="radio" class="form-check-input" name="type" id="put-kr" value="kr" checked>
+					<label for="put-kr" class="form-check-label">한식</label>&nbsp;
+					<input type="radio" class="form-check-input" name="type" id="put-ch" value="ch">
+					<label for="put-ch" class="form-check-label">중식</label>&nbsp;
+					<input type="radio" class="form-check-input" name="type" id="put-jp" value="jp">
+					<label for="put-jp" class="form-check-label">일식</label>&nbsp;
+				</div>
+				<br />
+				<div class="form-check form-check-inline">
+					<input type="radio" class="form-check-input" name="taste" id="put-hot" value="hot" checked>
+					<label for="put-hot" class="form-check-label">매운맛</label>&nbsp;
+					<input type="radio" class="form-check-input" name="taste" id="put-mild" value="mild">
+					<label for="put-mild" class="form-check-label">순한맛</label>
+				</div>
+				<br />
+				<input type="submit" class="btn btn-block btn-outline-success btn-send" value="수정" >
+			</form>
+		</div>
+		
+		<script>
+		$(menuSearchFrm).submit((e)=>{
+			e.preventDefault();
 			
+			const id = $("[name=id]", e.target).val();
+			console.log(id);
+			
+			$.ajax({
+				url: `${pageContext.request.contextPath}/menu/\${id}`,
+				method: "GET",
+				success(resp){
+					console.log(resp);
+					const {id, restaurant, name, price, type, taste} = resp;
+					const $frm = $(menuUpdateFrm);
+					$frm.find("[name=id]").val(id);
+					$frm.find("[name=restaurant]").val(restaurant);
+					$frm.find("[name=name]").val(name);
+					$frm.find("[name=price]").val(price);
+					
+					$frm.find(`[name=type][value=\${type}]`).prop("checked",true);
+					$frm.find(`[name=taste][value=\${taste}]`).prop("checked",true);
+					
+					
+				},
+				error(xhr, textStatus, err){
+					if(xhr.status == 404)
+						alert("조회한 메뉴는 존재하지 않습니다.");
+					else
+						console.log(xhr, textStatus, err);
+				}
+			});
+		});
+		
+		$(menuUpdateFrm).submit((e) => {
+			e.preventDefault();
+			
+			const obj = {
+				//id : $("#menuUpdateFrm [name=id]").val(),
+				id : $("[name=id]", e.target).val(),
+				restaurant : $("[name=restaurant]", e.target).val(),
+				name : $("[name=name]", e.target).val(),
+				price : $("[name=price]", e.target).val(),
+				type : $("[name=type]:checked", e.target).val(),
+				taste : $("[name=taste]:checked", e.target).val(),
+			};
+			
+			
+			console.log("obj = ",obj); // javascript객체
+			const jsonStr = JSON.stringify(obj); // json문자열로 바꿔줌
+			console.log(jsonStr); // json 문자열
+			
+			$.ajax({
+				url: `${pageContext.request.contextPath}/menu`,
+				method: "PUT",
+				data: jsonStr,
+				contentType: "application/json; charset=utf-8",
+				success(resp){
+					console.log(resp)
+					alert(resp.msg);
+				},
+				error: console.log,
+				complte(){
+					// #menuUpdateFrm.reset()
+					$(e.target)[0].reset();
+					$(menuSearchFrm)[0].reset();
+				}
+			});
+		});
+		</script>
+		
+	<div class="menu-test">
+    	<h4>메뉴 삭제하기(DELETE)</h4>
+    	<p>메뉴번호를 사용해 해당메뉴정보를 삭제함.</p>
+    	<form id="menuDeleteFrm">
+    		<input type="text" name="id" placeholder="메뉴번호" class="form-control" /><br />
+    		<input type="submit" class="btn btn-block btn-outline-danger btn-send" value="삭제" >
+    	</form>
+    </div>
+    <script>
+    $(menuDeleteFrm).submit((e)=> {
+    	e.preventDefault();
+    	
+    	const id = $(e.target).find("[name=id]").val();
+    	
+    	$.ajax({
+    		url : `${pageContext.request.contextPath}/menu/\${id}`,
+    		method: "DELETE",
+    		success(resp){
+    			console.log(resp);
+    			alert(resp.msg);
+    		},
+    		error(xhr, statusText, err){
+    			switch(xhr.status){
+    			case 404: alert("삭제 실패"); break;
+    			default: console.log(xhr, statusText, err);
+    			}
+    		}
+    	});
+    	
+    });
+    </script>
+				
 			
 		</div>
 	</section>

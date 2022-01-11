@@ -3,6 +3,7 @@ package com.kh.spring.menu.model.service;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -35,6 +36,26 @@ public class MenuServiceImpl implements MenuService{
 	@Override
 	public Menu selectOneMenu(int one) {
 		return menuDao.selectOneMenu(one);
+	}
+
+	@Override
+	public int selectTotalMenu() {
+		return menuDao.selectTotalMenu();
+	}
+
+	@Override
+	public List<Menu> selectPageMenu(RowBounds rowBounds) {
+		return menuDao.selectPageMenu(rowBounds);
+	}
+
+	@Override
+	public int updateMenu(Menu menu) {
+		return menuDao.updateMenu(menu);
+	}
+
+	@Override
+	public int deleteMenu(int id) {
+		return menuDao.deleteMenu(id);
 	}
 	
 

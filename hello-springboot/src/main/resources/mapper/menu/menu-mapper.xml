@@ -40,13 +40,6 @@
 			#{taste}
 		)
 	</insert>
-	<select id="selectOneMenu" resultType="menu">
-	select
-		*
-	from
-		menu
-	where
-		id = #{one}
-	</select>
+
 </mapper>
 
